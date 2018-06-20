@@ -1,0 +1,3 @@
+Usando o Rsync para deletar no destino o que nao existir mais na origem
+
+rsync -avz --del /home/rodrigocalado/ fulano@shutup:/backup/rodrigocalado/

@@ -1,0 +1,23 @@
+[root@teste01 opt]# yum install docker
+systemctl start docker
+docker ps
+
+
+instalando o rancher:
+
+ docker run -d --restart=unless-stopped -p 8080:8080 rancher/server
+ 
+ 
+docker run -d -e CATTLE_AGENT=192.168.15.39 -e CATTLE_AGENT_IP=10.192.168.15.39 -v /var/run/docker.sock:/var/run/docker.sock rancher/agent:v0.8.2
+
+
+
+liberar porta firewall linux:
+A sintaxe para uso é a seguinte: iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+INPUT: a direção do tráfego (INPUT = ENTRADA).
+-p: o protocolo utilizado pela porta (no caso tcp/udp).
+--dport: o número da porta onde o tráfego irá passar (80, 443, 6667).
+
+
+baixar uma image
+[root@teste01 ~]# docker pull centos

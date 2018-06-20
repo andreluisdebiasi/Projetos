@@ -1,0 +1,15 @@
+logar como user softvaro
+
+cd /etc/init.d/
+
+### Subir Jboss
+sudo ./jboss start
+
+### Parar Jboss
+sudo ./jboss stop
+
+### status jboss
+service jboss status
+
+
+

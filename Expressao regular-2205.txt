@@ -1,0 +1,24 @@
+(.*)HDIXVISTO(.*)\|JBoss\|JBoss Agent\|HDI\|Vistoria\|Web\|Servico\|DistribuicaoServiceImpl\|distribuir:Responses Per Interval
+(.*)Motor(.*)(.*)Distribuicao(.*)(.*)Servico\|(.*):Responses Per Interval
+(.*)MotorDistribuicaoIntegratorEAIImpl(.*)(.*)Distribuir\|(.*):Responses Per Interval
+(.*)MotorDistribuicaoIntegratorEAIImpl(.*)(.*)distribuir(.*)(.*)Responses Per Interval
+
+
+ISCoordenadas
+(.*)ISCoordenadas(.*)\|(.*):Responses Per Interval
+
+
+512 * Runtime.getRuntime().availableProcessors()
+4 cores
+
+
+
+
+
+
+
+
+
+sh /usr/local/jboss/jboss-as-7.1.1.Final/bin/jboss-cli.sh --connect --controller=10.7.40.15:9999 --user=admin --password=AbrS0ftv2p8%Ke73D --command="undeploy HDIAvisoSinistroEAR-1.0.ear --server-groups=hdi-java-desenv-1"
+
+

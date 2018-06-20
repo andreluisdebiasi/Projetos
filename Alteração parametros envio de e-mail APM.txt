@@ -1,0 +1,8 @@
+Acessar o servidor do Enterprise Manager de Produção
+#sudo su
+# vim /opt/CA/APM/config/IntroscopeEnterpriseManager.properties
+
+Retirar o "#" da linha 645, para alterar o parametro "introscope.webview.default.url"
+# introscope.webview.default.url=http://10.7.3.86:8080
+
+Salvar o arquivo, parar o serviço do Enterprise Manager e Webviwer, iniciar o serviço do Enterprise Manager e depois que subir o serviço, iniciar o serviço do Webviwer.

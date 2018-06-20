@@ -1,0 +1,8 @@
+#!/bin/bash
+ping -q -c5 10.7.15.100 > /home/jboss/hdi/lapa/log-sunhdi20.log
+if [ $? -eq 0 ]
+then echo Teste ping OK para SUNHDI20
+exit 0
+else echo Falha no teste de ping para o servidor SUNHDI20
+exit 1
+fi

@@ -1,0 +1,187 @@
+1 - # Criar um diretorio de nome "vault" dentro do jboss para armazenar o keystore
+/opt/jboss/vault/
+
+
+
+
+2 - gerar keystore dentro da pasta do vault criada : /opt/jboss/vault/
+
+Sintaxe:
+/opt/java/bin/keytool -genseckey -alias vault -storetype jceks -keyalg AES -keysize 128 -storepass Hdi785@vault# -keypass Hdi785@vault# -keystore /opt/jboss/vault/vault.keystore
+
+Sintaxe Java OpenJdk
+/usr/lib/jvm/jre/bin/keytool -genseckey -alias vault -storetype jceks -keyalg AES -keysize 128 -storepass Hdi785@vault# -keypass Hdi785@vault# -keystore /opt/jboss/vault/vault.keystore
+
+/opt/jboss/vault/ls -l 
+-rw-r--r-- 1 root root  498 Dec 15 15:40 vault.keystore
+
+
+
+
+
+3 - # usando o vault tools para armazenar uma senha no vault:
+
+/opt/jboss/bin/./vault.sh
+
+=========================================================================
+
+  JBoss Vault
+
+  JBOSS_HOME: /opt/jboss
+
+  JAVA: java
+
+=========================================================================
+
+**********************************
+****  JBoss Vault  ***************
+**********************************
+Please enter a Digit::   0: Start Interactive Session  1: Remove Interactive Session  2: Exit
+
+# digite 0 para iniciar uma sessao interativa
+
+# informar os valores de acordo com a sua configuracao local
+
+
+
+
+Enter directory to store encrypted files: /opt/jboss/vault
+Enter Keystore URL:/opt/jboss/vault/vault.keystore
+Enter Keystore password: Hdi785@vault#
+Enter Keystore password again: Hdi785@vault#
+Values match
+Enter 8 character salt:softvaro
+Enter iteration count as a number (Eg: 44):47
+Enter Keystore Alias:vault
+Initializing Vault
+Nov 04, 2016 12:25:46 AM org.picketbox.plugins.vault.PicketBoxSecurityVault init
+INFO: PBOX000361: Default Security Vault Implementation Initialized and Ready
+Vault Configuration in configuration file:
+********************************************
+
+
+********************************************
+...
+</extensions>
+<vault>
+  <vault-option name="KEYSTORE_URL" value="/opt/jboss/vault/vault.keystore"/>
+  <vault-option name="KEYSTORE_PASSWORD" value="MASK-92G7HIhhGW7aUj0N9odGs"/>
+  <vault-option name="KEYSTORE_ALIAS" value="vault"/>
+  <vault-option name="SALT" value="softvaro"/>
+  <vault-option name="ITERATION_COUNT" value="47"/>
+  <vault-option name="ENC_FILE_DIR" value="/opt/jboss/vault/"/>
+</vault><management> ...
+********************************************
+
+Vault is initialized and ready for use
+Handshake with Vault complete
+Please enter a Digit::  0: Store a secured attribute  1: Check whether a secured attribute exists  2: Remove secured attribute  3: Exit
+
+# digite 0 para inserir um atributo no keystore
+0
+
+Task: Store a secured attribute
+
+# Como exemplo vou informar S1SV@RO que eh a senha do datasource do segemimr
+# e colocar no block progress como o atributo password
+
+Please enter secured attribute value (such as password):S1SV@RO
+Please enter secured attribute value (such as password) again: S1SV@RO
+Values match
+Enter Vault Block:progress
+Enter Attribute Name:password
+Secured attribute value has been stored in vault. 
+Please make note of the following:
+********************************************
+Vault Block:ds_segemimr_uid
+Attribute Name:password
+Configuration should be done as follows:
+VAULT::progress::password::1
+********************************************
+
+# Copie e cole em um txt essa entrada acima (linhas entre os *) para ser usada no passo 6.
+
+
+
+
+
+
+
+4- Entrtar no Cli do Jboss
+./jboss-cli.sh --connect --controller=<IP_SERVER_JBOSS>:9999
+
+uma vez conectado no console jboss CLI digite o comando abaixo ( esse exemplo as configurações são conforme os caminhos definidos nos passos anteriores)
+
+# digite /host=<Tab> que ira mostrar o nome dos hosts, nesse exemplo, master
+
+/host=GERXAPP1A/core-service=vault:add(vault-options=[("KEYSTORE_URL" => "/opt/jboss/vault/vault.keystore"), ("KEYSTORE_PASSWORD" => "MASK-92G7HIhhGW7aUj0N9odGs"), ("KEYSTORE_ALIAS" => "vault"), ("SALT" => "softvaro"),("ITERATION_COUNT" => "47"), ("ENC_FILE_DIR" => "/opt/jboss/vault/")])
+
+ Saída do comando em caso de sucesso:
+lt/")])
+{
+    "outcome" => "success",
+    "result" => undefined,
+    "server-groups" => undefined
+}
+
+
+
+
+
+
+5- Nesse ponto o servidor já está preparado para receber as senhas criptografadas pelo vault.
+
+
+
+
+
+
+6- Observar o trecho colado no txt no final do passo 3, conforme abaixo:
+
+********************************************
+Vault Block:progress
+Attribute Name:password
+Configuration should be done as follows:
+VAULT::progress::password::1
+********************************************
+
+
+A SENHA CRIPTOGRAFADO NESSE EXEMPLO SERÁ A VAULT::progress::password::1
+
+
+
+
+
+
+
+7- Substitua a senha no campo password do referido DATASOURCE no arquivo domain.xml seguindo o padrão abaixo:
+
+<password>${VAULT::progress::password::1}</password>
+
+
+Caso seja necessário usar a senha em algum arquivo.properties verificar com o analista desenvolvedor se a aplicação tem uma solução programatica para ler a senha criptografada, como no nosso exemplo: VAULT::progress::password::1
+
+
+
+
+
+
+8- Para gerar uma criptografia dessa ou de outras senhas basta seguir á partir do passo 3, sempre informando os mesmos caminhos configurados na primeira execução do vault.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

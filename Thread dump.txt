@@ -1,0 +1,7 @@
+Segue instrução para thread dump antes do restart dos JBoss      
+ 
+jstack -l 1234 >> myThread.dmp
+ 
+aonde o 1234 é o PID do java do JBoss.
+ 
+O jstack está na pasta /opt/java/bin

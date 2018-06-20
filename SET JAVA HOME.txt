@@ -1,0 +1,34 @@
+Logo após instalar Java
+
+
+# sudo sh -c "echo export JAVA_HOME=/opt/jdk1.7.0_79/jre >> /etc/environment"
+# source /etc/environment
+
+
+java 8
+
+
+# sudo sh -c "echo export JAVA_HOME=/opt/jdk1.8.0_162/jre >> /etc/environment"
+# source /etc/environment
+
+ Para o comando java funcionar em qualquer diretorio:
+ 
+Criar link simbolico em /usr/bin/ java apontando para o caminho de instalação /opt/java/bin/java 
+/usr/bin
+[root@HDIXAPPD2 bin]# ls -l java
+lrwxrwxrwx 1 root root 18 Feb  9 10:05 java -> /opt/java/bin/java
+[root@HDIXAPPD2 bin]#
+
+
+
+
+
+
+JAVA OPENJDK INSTALADO PELO YUM
+
+1- sudo sh -c "echo export JAVA_HOME=/usr/lib/jvm/jre >> /etc/environment"
+2- source /etc/environment
+3- echo $JAVA_HOME
+
+
+

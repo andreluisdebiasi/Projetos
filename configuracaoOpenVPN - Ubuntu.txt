@@ -1,0 +1,3 @@
+download dos Archive via console PFSENSE: VPN > OPENVPN > CLIENT EXPORT > mudar Host Name Resolution para softvaro.ddns.net > localize o usuario > Archive download
+# cd /opt/OpenVPN
+# openvpn --config /opt/OpenVPN/fortknox-udp-1195-adilson.rodrigue.ovpn

@@ -1,0 +1,18 @@
+fazer procedimento logando no usuario que executará o scrit:
+
+#su rundeck
+
+$Rundeck>
+
+
+
+A primeira linha faz com que seja criada uma chave DSA e esta seja armazenada no arquivo id_dsa
+# ssh-keygen -t dsa -f ~/.ssh/id_dsa
+
+
+
+Colocam a chave criada dentro do arquivo de chaves autorizadas tanto na máquina que serve os arquivos quanto na que recebe. Troque maquina_remota pelo endereço IP da máquina que vai servir os arquivos.
+# cat ~/.ssh/id_dsa.pub | ssh root@maquina_remota(origem dos arquivos) 'cat - >> ~/.ssh/authorized_keys'
+
+
+# cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys

@@ -1,0 +1,34 @@
+Clonar um projeto no Bitbucket
+
+### Baixar o repositorio remoto para a seu note
+git clone https://marcuspereiragodoy@bitbucket.org/Anderson_Lima/hdi-digital-conf-homolog.git
+
+
+### Atualizar o repositorio local e qdo estiver concluido, digitar os comandos abaixo para subir atualização para o repositorio remoto
+
+git add -A
+
+git commit -m "andre.debiasi 20171119"
+
+git tag v1.2
+
+git push -u origin v1.2
+
+
+###
+Push na Master
+git push -u origin master
+
+###
+Push tageado
+git push origin v1.2
+
+###
+Criar Tag
+ git tag v1.2
+
+
+##########
+detelar Tag
+git push -d origin v1.0
+

@@ -1,0 +1,14 @@
+#!/bin/sh
+URLPath=http://10.7.2.229:8081/hdidbmon/index.html
+
+status_line=`curl -i $URLPath 2>/dev/null | head -n 1`
+status_code=`echo $status_line | awk '{print $2}'`
+echo "$(date +"%x %X") => Status Code: ${status_code}"
+
+if [ "${status_code}" == "200" ]; then
+        echo URL OK
+        exit 0
+else
+        echo URL Indisponível!
+        exit 1
+fi

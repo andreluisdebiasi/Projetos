@@ -1,0 +1,62 @@
+1- ir no caminho: /usr/lib/systemd/system
+2- criar o arquivo httpd.service: vim httpd.service
+3- inserir o conteudo abaixo:
+ 
+ 
+[Unit]
+Description=The Apache HTTP Server
+After=network.target remote-fs.target nss-lookup.target
+Documentation=man:httpd(8)
+Documentation=man:apachectl(8)
+
+[Service]
+Type=notify
+ExecStart=/etc/httpd/bin/apachectl start
+ExecStop=/etc/httpd/bin/apachectl stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+
+
+4-para parar Apache:  systemctl stop httpd
+5-para iniciat Apache : systemctl start httpd
+6-para ver status do apache: systemctl status httpd
+
+
+
+
+
+
+
+saida para o comando status:
+
+[root@HDIXAPPD2 system]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)
+   Active: active (exited) since Wed 2018-02-14 18:28:41 -02; 3s ago
+     Docs: man:httpd(8)
+           man:apachectl(8)
+  Process: 21887 ExecStop=/etc/httpd/bin/apachectl stop (code=exited, status=0/SUCCESS)
+  Process: 21903 ExecStart=/etc/httpd/bin/apachectl start (code=exited, status=0/SUCCESS)
+ Main PID: 21903 (code=exited, status=0/SUCCESS)
+   CGroup: /system.slice/httpd.service
+           ├─21906 /etc/httpd/bin/httpd -k start
+           ├─21907 /etc/httpd/bin/httpd -k start
+           ├─21908 /etc/httpd/bin/httpd -k start
+           └─21909 /etc/httpd/bin/httpd -k start
+
+Feb 14 18:28:41 HDIXAPPD2 systemd[1]: Starting The Apache HTTP Server...
+Feb 14 18:28:41 HDIXAPPD2 systemd[1]: Started The Apache HTTP Server.
+[root@HDIXAPPD2 system]#
+
+
+
+
+# configurar service para subir no boot do server
+[root@HDIXAPPD2 softvaro]# systemctl enable httpd.service
+Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.
+[root@HDIXAPPD2 softvaro]#
+
+
+

@@ -1,0 +1,33 @@
+  107  cd /opt/
+  108  wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz"
+  109  tar xzf jdk-7u79-linux-x64.tar.gz
+  110  cd /opt/jdk1.7.0_79/
+  111  alternatives --install /usr/bin/java java /opt/jdk1.7.0_79/bin/java 2
+  112  1
+  113  alternatives --config java
+  114  alternatives --install /usr/bin/jar jar /opt/jdk1.7.0_79/bin/jar 2
+  115  alternatives --install /usr/bin/javac javac /opt/jdk1.7.0_79/bin/javac 2
+  116  alternatives --set jar /opt/jdk1.7.0_79/bin/jar
+  117  alternatives --set javac /opt/jdk1.7.0_79/bin/javac
+  118  java -version
+  119  # sudo sh -c "echo export JAVA_HOME=/opt/jdk1.7.0_79/jre >> /etc/environment"
+  120  # source /etc/environment
+  121     
+  122  yum install httpd.x86_64
+  123  yum install mod_cluster.x86_64
+  124  cd /opt/
+  125  ls -lah
+  126  vim /etc/httpd/conf.d/mod_cluster.conf
+  127  vim /etc/httpd/conf.d/mod_cluster.conf
+  128  vim /etc/httpd/conf/httpd.conf
+  129  vim /etc/httpd/conf/httpd.conf
+  130  /etc/init.d/restart
+  131  /etc/init.d/httpd restart
+  132  java -version
+  133  cd /opt/
+  134  ls -lah
+  135  cd /home/softvaro/
+  136  ls -lah
+  137  unzip jboss-eap-6.4.0.zip
+  138  cd /opt/
+  139  mv /home/softvaro/jboss-eap-6.4 ./

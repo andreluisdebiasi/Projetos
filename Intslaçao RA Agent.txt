@@ -1,0 +1,71 @@
+download: http://10.253.0.52:8080/nolio-app/?#
+
+
+ ./nolio_agent_linux_6_2_0_b3017.sh
+ 
+ 
+ This will install Release Automation Agent on your computer.
+OK [o, Enter], Cancel [c]
+
+enter  até chegar na pergunta 
+I accept the agreement
+Yes [1], No [2]
+
+
+
+Where should Release Automation Agent be installed?
+[/opt/CA/ReleaseAutomationAgent]
+
+enter
+
+Listening port :
+[6600]
+
+enter
+
+
+Choose your Node ID
+Enter Node ID, it must be a unique string.
+Node ID
+[HDIXTFHA]
+
+enter
+
+Configure communication with the Execution Server
+Define the Execution Server the agent reports to
+
+Execution Server Name or IP :
+[]
+10.253.0.52
+
+Execution Server TCP port:
+[6600]
+6600
+
+Use secured communications?
+Yes [y], No [n, Enter]
+y
+
+
+
+
+para subir/parar/restartar o agent:
+
+./deployer_daemon.sh start ou stop ou restart
+
+
+Arq. Configuração de ip Execution Server= /opt/CA/ReleaseAutomationAgent/conf/nimi_config.xml
+
+
+
+
+
+
+
+
+
+
+
+
+
+

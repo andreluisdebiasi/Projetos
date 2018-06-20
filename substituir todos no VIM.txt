@@ -1,0 +1,54 @@
+%s/HDI@PATRI!/P@TRI$#DI/g
+  
+DE: HDI@PATRI!
+PARA: P@TRI$#DI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <user-name>fn_tarifador</user-name>
+ <password>fn_tarifador</password>
+
+  <user-name>em_vistoria</user-name>
+  <password>vistoria@40!</password>
+  
+  
+  fn_tarifador
+  ********************************************
+Vault Block:sql_fn_tarifador
+Attribute Name:password
+Configuration should be done as follows:
+VAULT::sql_fn_tarifador::password::1
+********************************************
+
+vistoria@40!
+********************************************
+Vault Block:sql_em_vistoria
+Attribute Name:password
+Configuration should be done as follows:
+VAULT::sql_em_vistoria::password::1
+********************************************
+
+
+
+
+
+
+
+
+

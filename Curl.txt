@@ -1,0 +1,13 @@
+curl -X POST -d "AGENT_NAME=${AGENT_NAME}&MESSAGE=${MESSAGE}&STATE=${STATE}" http://10.xx.xxx.xx/adapter_dynatrace_hom/dynatrace_post.asp
+
+
+
+
+
+enviando arquivo usando o curl
+curl -X POST -F 'image=@/path/to/pictures/picture.jpg' http://domain.tld/upload
+
+
+
+enviando dados de um arquivo usando o curl
+curl --form "arquivo1=@teste.txt" "http://localhost/post.php"

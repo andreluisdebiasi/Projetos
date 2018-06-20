@@ -1,0 +1,43 @@
+1- Entrar no Cli do Jboss - 
+# cd /opt/jboss/bin/
+# ./jboss-cli.sh --connect --controller=<IP_SERVER_JBOSS>:9999
+
+
+2- Executar o comando abaixo respeitando o nome do servidor e server group configurados
+
+[domain@10.7.2.210:9999 /] /host=master/server=server-one/subsystem=datasources/data-source=ds_segrm:test-connection-in-pool
+
+O Resultado deve ser:
+
+{
+   "outcome" => "success",
+   "result" => [true]
+}   
+   
+    
+--------------------------------------------------------------------------------------------------------------------------------------
+Exemplo rodando o comando em um server do digital:
+
+/host=HDIXDG2APP1A/server=digital2-cotacao-producao-group-server-1/subsystem=datasources/data-source=ds_segrm:test-connection-in-pool
+
+O Resultado deve ser:
+
+{
+   "outcome" => "success",
+   "result" => [true]
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Teste Datasource seghist:
+[root@HDIXFS02 softvaro]# cd /opt/jboss/bin
+[root@HDIXFS02 bin]# ./jboss-cli.sh --connect --controller=10.7.2.158:9999
+[domain@10.7.2.158:9999 /] /host=admin/server=
+hdi-fs-server-2  server-one       server-two
+[domain@10.7.2.158:9999 /] /host=admin/server=hdi-fs-server-2/subsystem=datasources/data-source=ds_seghist:test-connection-in-pool
+{
+    "outcome" => "success",
+    "result" => [true]
+}
+[domain@10.7.2.158:9999 /]

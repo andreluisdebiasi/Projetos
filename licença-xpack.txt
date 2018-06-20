@@ -1,0 +1,38 @@
+Procedimento para aplicar licença do X-pack
+
+1- Solicitar ao Rafael o novo arquivo de licença do x-pack
+2- Renomear o arquivo conforme o exemplo:  license20180305.json
+3- Execute o comando abaixo via terminal no mesmo diretorio aonde se encontra o arquivo de licença:
+		#curl -XPUT -u elastic ‘http://10.7.0.83:9200/_xpack/license’ -H “Content-Type: application/json” -d @license20180305.json
+4- Ao executar o comando irá ser pedido uma senha. Conferir no arquivo de senhas a senha a ser usada.
+
+
+
+
+o comando para aplicar é :
+
+curl -XPUT -u elastic ‘http://10.7.0.83:9200/_xpack/license’ -H “Content-Type: application/json” -d @license20180305.json
+
+license20180305.json é o arquivo da licença (verificar onde pegar esse arquivo) = pedir para o Rafa
+
+Execute este comando via terminal e voce precisa executar no mesmo diretorio aonde se encontra o arquivo
+
+
+
+
+
+
+andre,
+qdo vc executa este comando
+ele pede uma senha
+a senha é changeme
+
+***** não colocar senha na wiki
+
+
+
+
+só uma duvido o arquivo de licença license20180305.json  tem que ser gerado de alguma forma?
+nao… eu so peguei o arquivo e renomeie
+
+

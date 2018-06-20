@@ -1,0 +1,10 @@
+win:
+
+Download the Filebeat Windows zip file from the downloads page.
+Extract the contents of the zip file into C:\Program Files.
+Rename the filebeat-<version>-windows directory to Filebeat.
+Open a PowerShell prompt as an Administrator (right-click the PowerShell icon and select Run As Administrator). If you are running Windows XP, you may need to download and install PowerShell.
+From the PowerShell prompt, run the following commands to install Filebeat as a Windows service:
+
+PS > cd 'C:\Program Files\Filebeat'
+PS C:\Program Files\Filebeat> .\install-service-filebeat.ps1

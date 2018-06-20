@@ -1,0 +1,1 @@
+00 18 * * *  sh /home/softvaro/scriptLogJboss.sh
