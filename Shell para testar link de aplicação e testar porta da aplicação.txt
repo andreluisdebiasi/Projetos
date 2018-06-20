@@ -1,0 +1,21 @@
+#!/bin/sh
+
+URLPath="http://10.7.3.86:8080/ApmServer/"
+
+http_status=$(curl -I $URLPath | head -n 1| cut -d $' ' -f2)
+apm_tcp_port_status=$(nc -zv 10.7.3.86 5001)
+
+if [ "$http_status" == "200" ]; then
+        echo "HTTP Status do WebView está OK!"
+        if [ "$apm_tcp_port_status" == "Connection to 10.7.3.86 5001 port [tcp/commplex-link] succeeded!"  ]; then
+                echo "Porta do APM está OK!"
+                exit 0
+        else
+                echo "$apm_tcp_port_status"
+                echo "Porta do APM indisponível!"
+                exit 1
+        fi
+else
+        echo "WebView do APM indisponível!"
+        exit 1
+fi

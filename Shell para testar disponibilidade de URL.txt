@@ -1,0 +1,15 @@
+#!/bin/sh
+
+URLPath="https://www.hdi.com.br/col/"
+
+status_line=`curl -i $URLPath 2>/dev/null | head -n 1`
+status_code=`echo $status_line | awk '{print $2}'`
+echo "$(date +"%x %X") => Status Code: ${status_code}"
+
+if [ "${status_code}" == "200" ]; then
+        echo https://www.hdi.com.br/col OK!!
+        exit 0
+else
+        echo https://www.hdi.com.br/col com INSTABILIDADE!!
+        exit 1
+fi

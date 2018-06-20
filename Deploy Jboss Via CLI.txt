@@ -1,0 +1,14 @@
+Undeploy via script:
+
+teste=$(sh /opt/jboss/bin/jboss-cli.sh --connect --controller=10.7.2.210:9999 --user=softvaro --password=xxxxxx --command='deployment-info --name=digital2-buscas.ear')
+result=`echo $teste | awk '{print $8}'`
+if [ "$result" == "enabled" ]; then
+    sh /opt/jboss/bin/jboss-cli.sh --connect --controller=10.7.2.210:9999 --user=softvaro --password=xxxxxx --command="undeploy digital2-buscas.ear --server-groups=softvaro-java-desenv-1"
+fi
+
+
+
+Deploy
+
+
+sh /opt/jboss/bin/jboss-cli.sh --connect --controller=10.7.2.210:9999 --user=softvaro --password=xxxxxx --commands="deploy /home/softvaro/deploy/digital/dev/digital2-buscas.ear --server-groups=softvaro-java-desenv-1, deployment-info --name=digital2-buscas.ear"

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+function testeApache() {
+URL=$(curl -s -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "j_username=58795550000124&j_password=xxxxx" --connect-timeout 8  "http://10.7.3.180/digital2/j_spring_security_check")
+
+if [ "$? == 0)" ]; then
+
+     echo ${URL:25} | tr -d '"}' > /home/jboss/hdi/DigitalTestApache/temp/temp180.txt
+
+     link=$(cat /home/jboss/hdi/DigitalTestApache/temp/temp180.txt)
+
+     URLTime=$(curl -o /dev/null -s -w %{time_total}\\n --connect-timeout 8 $link)
+     echo "$(date +"%x %X") => Tempo URL 180: ${URLTime}" >> /home/jboss/hdi/DigitalTestApache/logs/log180.txt
+          if [ $(bc <<< "$URLTime < 3") -eq 1 ]; then
+               echo "Tempo Apache 180 OK = $URLTime segundo(s)"
+               exit 0
+          else
+               echo "Tempo Apache 180 apresentou lentidão! Tempo = $URLTime segundo(s)"
+               exit 1
+      fi
+else
+   echo "url com problema!"
+   exit 1
+   fi
+   }
+
+apache_tcp_port_status=$(nc -zv 10.7.3.180 80)
+
+if [ "$apache_tcp_port_status"  == "Connection to 10.7.3.180 80 port [tcp/http] succeeded!"  ]; then
+       testeApache
+else
+   echo "$(date +"%x %X") => Serviço Apache está fora!" >> /home/jboss/hdi/DigitalTestApache/logs/log180.txt
+   exit 1
+fi

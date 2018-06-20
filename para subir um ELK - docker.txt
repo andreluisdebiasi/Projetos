@@ -1,0 +1,10 @@
+para subir um ELK
+https://github.com/deviantony/docker-elk
+GitHub
+deviantony/docker-elk
+docker-elk - The ELK stack powered by Docker and Compose.
+
+
+
+
+git clone + docker-compose up -d
