@@ -1,0 +1,18 @@
+#/bin/bash
+
+# Listar Processos Jboss
+process1=$(ps axf | grep "Process Controller" | grep -v grep)
+process2=$(ps axf | grep "Host Controller" | grep -v grep)
+process3=$(ps axf | grep "Server:server-one" | grep -v grep)
+process4=$(ps axf | grep "Server:server-two" | grep -v grep)
+
+# Kill Processos Process Controller e Host Controller Jboss
+result1=`echo $process1 | awk '{print $1} '`
+result2=`echo $process2 | awk '{print $1} '`
+result3=`echo $process3 | awk '{print $1} '`
+result4=`echo $process4 | awk '{print $1} '`
+
+sudo kill -9 $result1
+sudo kill -9 $result2
+sudo kill -9 $result3
+sudo kill -9 $result4
