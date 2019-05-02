@@ -1,4 +1,5 @@
 ### Ajuste no apache: FileqqerNome.xml direcionar   para    http://bucketaws-S3/FileqqerNome.xml
+### ADD no vhost da app:
 
 ProxyPassMatch "^/(.*\.xml)$" "http://s3-sa-east-1.amazonaws.com/varejoford-qa-br/v2/sitemap/qa/$1"
 
