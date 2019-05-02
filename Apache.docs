@@ -1,0 +1,8 @@
+### Ajuste no apache: FileqqerNome.xml direcionar   para    http://s3-sa-east-1.amazonaws.com/varejoford-qa-br/v2/sitemap/qa/FileqqerNome.xml
+
+ProxyPassMatch "^/(.*\.xml)$" "http://s3-sa-east-1.amazonaws.com/varejoford-qa-br/v2/sitemap/qa/$1"
+
+
+#########################################################################################################
+
+
