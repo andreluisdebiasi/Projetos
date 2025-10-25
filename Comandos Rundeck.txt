@@ -3,7 +3,7 @@ service rundeckd restart
 service rundeckd stop
 
 
-create user:
+#create user:
 
 /var/lib/rundeck/bootstrap
 java -cp jetty-all-9.0.7.v20131107.jar org.eclipse.jetty.util.security.Password andre.debiasi softv@4dmin
@@ -13,11 +13,16 @@ MD5:a76ab3dbd28457b8b83cdbb210668330
 CRYPT:anEsL1h9tsEfU
 
 
-add user:
+#add user:
 
 vim /etc/rundeck/realm.properties
 andre.debiasi:MD5:a76ab3dbd28457b8b83cdbb210668330,user
 service rundeckd restart
+
+#Analisar Logs de execução:
+
+tail -f 100 /apl/elk/rundeck/server/logs/rundeck.cleanup.log
+
 
 
 
